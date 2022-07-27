@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Health App</string>
+    <string name="berat_badan">Berat Badan</string>
+    <string name="tinggi_badan">Tinggi Badan</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="kegiatan_sehari_hari">Kegiatan Sehari-hari</string>
+    <string name="hitung_kebutuhan_kalori_anda">Hitung Kebutuhan Kalori Anda</string>
+    <string name="isi_berat">Masukkan berat badan</string>
+    <string name="isi_tinggi">Masukkan tinggi badan</string>
+</resources>
