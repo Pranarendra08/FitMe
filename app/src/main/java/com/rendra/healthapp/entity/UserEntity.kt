@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class UserEntity(
+    //val jenisKelamin: String,
     val tinggi: String,
     val berat: String,
     val aktivitasFisik: Double,

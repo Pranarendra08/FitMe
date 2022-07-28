@@ -76,16 +76,14 @@
             android:id="@+id/rb_pria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pria"
-            android:onClick="onRadioButtonClicked" />
+            android:text="Pria" />
 
         <RadioButton
             android:id="@+id/rb_wanita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:text="Wanita"
-            android:onClick="onRadioButtonClicked"/>
+            android:text="Wanita"/>
     </RadioGroup>
 
     <TextView

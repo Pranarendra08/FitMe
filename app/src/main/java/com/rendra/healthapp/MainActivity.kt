@@ -3,8 +3,6 @@ package com.rendra.healthapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.RadioButton
 import com.rendra.healthapp.databinding.ActivityMainBinding
 import com.rendra.healthapp.entity.UserEntity
 
@@ -97,27 +95,6 @@ class MainActivity : AppCompatActivity() {
                     }
                     startActivity(hitungKebutuhanKalori)
                 }
-            }
-        }
-    }
-
-    fun onRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            // Is the button now checked?
-            val checked = view.isChecked
-
-            // Check which radio button was clicked
-            when (view.getId()) {
-                R.id.rb_pria ->
-                    if (checked) {
-                        // jenis kelamin wanita
-                        // 30 kkal * BBI
-                    }
-                R.id.rb_wanita ->
-                    if (checked) {
-                        // jenis kelamin pria
-                        // 25 kkal * BBI
-                    }
             }
         }
     }

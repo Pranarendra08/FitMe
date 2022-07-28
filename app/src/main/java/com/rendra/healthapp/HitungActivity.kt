@@ -9,11 +9,6 @@ class HitungActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHitungBinding
 
-//    companion object {
-//        const val EXTRA_HEIGHT_WEIGHT = "extra_height_weight"
-//        const val EXTRA_ACTIVIES = "extra_activities"
-//    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHitungBinding.inflate(layoutInflater)
@@ -27,6 +22,7 @@ class HitungActivity : AppCompatActivity() {
 
     private fun initViews(user: UserEntity) {
         with(binding) {
+            val jenisKelamin = user.jenisKelamin
             val berat = user.berat
             val tinggi = user.tinggi
             val aktivitas = user.aktivitasFisik.toString()
@@ -34,6 +30,7 @@ class HitungActivity : AppCompatActivity() {
             tvBerat.text = berat
             tvTinggi.text = tinggi
             tvAktivitas.text = aktivitas
+            tvJenisKelamin.text = jenisKelamin
         }
     }
 }
