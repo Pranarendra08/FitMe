@@ -22,10 +22,12 @@ class HitungActivity : AppCompatActivity() {
 
     private fun initViews(user: UserEntity) {
         with(binding) {
+            val nama = user.nama
             val jenisKelamin = user.jenisKelamin
             val berat = user.berat
             val tinggi = user.tinggi
             val aktivitas = user.aktivitasFisik.toString()
+
 
             tvBerat.text = berat
             tvTinggi.text = tinggi

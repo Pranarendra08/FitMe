@@ -1,6 +1,5 @@
 package com.rendra.healthapp
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.rendra.healthapp.databinding.ActivityMainBinding
@@ -15,87 +14,55 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initViews()
-        supportActionBar?.hide()
+        val User = intent.getParcelableExtra<UserEntity>("EXTRA_USER")
+        if (User != null) {
+            initViews(User)
+            supportActionBar?.hide()
+        }
+
     }
 
-    private fun initViews() {
+    private fun initViews(user: UserEntity) {
         with(binding) {
-            var aktifitasFisik = 0.00
+            val nama = user.nama
+            val jenisKelamin = user.jenisKelamin
+            val berat = user.berat.toDouble()
+            var tinggi = user.tinggi.toDouble()
+            val aktivitas = user.aktivitasFisik / 100.0
 
-            cbMembaca.setOnClickListener {
-                if (binding.cbMembaca.isChecked) {
-                    aktifitasFisik += 10.0
-                }
+            tinggi /= 100.0
+            var bmi = berat / (tinggi*tinggi)
+
+            tinggi = tinggi * 100.0
+            var bbi  = (tinggi - 100) - (0.1 * ( tinggi - 100))
+
+            var kkb = 0.0
+            if (jenisKelamin == "Pria") {
+                kkb = 30 * bbi
+            }
+            if (jenisKelamin == "Wanita") {
+                kkb = 25 * bbi
             }
 
-            cbMenyetir.setOnClickListener {
-                if (binding.cbMenyetir.isChecked) {
-                    aktifitasFisik += 10.0
-                }
-            }
+            var kkt = kkb + (aktivitas * kkb)
 
-            cbBerjalan.setOnClickListener {
-                if (binding.cbBerjalan.isChecked) {
-                    aktifitasFisik += 20.0
-                }
-            }
+            var protein = 15.0 / 100.0
+            var kebutuhanProtein = (protein * kkt) / 4
 
-            cbMenyapu.setOnClickListener {
-                if (binding.cbMenyapu.isChecked) {
-                    aktifitasFisik += 20.0
-                }
-            }
+            var lemak = 20.0 / 100.0
+            var kebutuhanLemak = (lemak * kkt) / 9
 
-            cbJalanCepat.setOnClickListener {
-                if (binding.cbJalanCepat.isChecked) {
-                    aktifitasFisik += 30.0
-                }
-            }
+            var karbo = 65.0/100.0
+            var kebutuhanKarbo = (karbo * kkt) / 4
 
-            cbBersepeda.setOnClickListener {
-                if (binding.cbBersepeda.isChecked) {
-                    aktifitasFisik += 30.0
-                }
-            }
-
-            cbAerobik.setOnClickListener {
-                if (binding.cbAerobik.isChecked) {
-                    aktifitasFisik += 40.0
-                }
-            }
-
-            cbMendaki.setOnClickListener {
-                if (binding.cbMendaki.isChecked) {
-                    aktifitasFisik += 40.0
-                }
-            }
-
-            cbJogging.setOnClickListener {
-                if (binding.cbJogging.isChecked) {
-                    aktifitasFisik += 40.0
-                }
-            }
-
-            btnHitung.setOnClickListener {
-                var isEmpty = false
-                if (etBeratBadan.text.trim().contentEquals("")) {
-                    isEmpty = true
-                    etBeratBadan.error = getString(R.string.isi_berat)
-                }
-                if (etTinggiBadan.text.trim().contentEquals("")) {
-                    isEmpty = true
-                    etBeratBadan.error = getString(R.string.isi_tinggi)
-                }
-                if (!isEmpty) {
-                    val berat = etBeratBadan.text.toString()
-                    val tinggi = etTinggiBadan.text.toString()
-                    val hitungKebutuhanKalori = Intent(this@MainActivity, HitungActivity::class.java).apply {
-                        putExtra("EXTRA_USER", UserEntity(tinggi, berat, aktifitasFisik))
-                    }
-                    startActivity(hitungKebutuhanKalori)
-                }
-            }
+            tvNama.text = "Hai, $nama"
+            tvBeratBadanSekarang.text = "%.1f Kg".format(berat)
+            tvBbi.text = "%.1f Kg".format(bbi)
+            tvKebutuhanKalori.text = "%.1f calories".format(kkt)
+            //tvBmi.text = bmi.toString()
+            tvProtein.text = "%.1f".format(kebutuhanProtein)
+            tvLemak.text = "%.1f".format(kebutuhanLemak)
+            tvKarbohidrat.text = "%.1f".format(kebutuhanKarbo)
         }
     }
 }

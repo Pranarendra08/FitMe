@@ -5,6 +5,15 @@
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="kegiatan_sehari_hari">Kegiatan Sehari-hari</string>
     <string name="hitung_kebutuhan_kalori_anda">Hitung Kebutuhan Kalori Anda</string>
+    <string name="isi_nama">Masukkan nama</string>
     <string name="isi_berat">Masukkan berat badan</string>
     <string name="isi_tinggi">Masukkan tinggi badan</string>
+    <string name="bmi">BMI</string>
+    <string name="fitme">FitMe</string>
+    <string name="kalori_yang_anda_butuhkan_setiap_hari">Kalori yang anda butuhkan setiap hari</string>
+    <string name="berat_badan_saat_ini">Berat badan saat ini</string>
+    <string name="berat_badan_ideal">Berat badan Ideal</string>
+    <string name="gram_protein">Gram Protein</string>
+    <string name="gram_lemak">Gram Lemak</string>
+    <string name="gram_karbohidrat">Gram Karbohidrat</string>
 </resources>
